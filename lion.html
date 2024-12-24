@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salaar Movie Ticket Booking</title>
+    <title>Lion king Movie Ticket Booking</title>
    <style>
    * {
     margin: 0;
@@ -18,7 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-     background:url("./images/bookings/salaar.jpeg");
+  
+     background:url("./images/bookings/lionking.jpeg");
      
 }
 
@@ -26,8 +27,8 @@
     width: 550px;
     height: fit-content;
     border-radius: 8px;
-    padding: 26px;
-    background-color: rgba(145, 141, 141, 0.5);
+    padding: 16px;
+    background-color: rgba(219, 206, 206, 0.5);
     /* box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25); */
 }
 
@@ -235,100 +236,6 @@ input {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 420px) and (min-width: 361px) {
-    .main {
-        flex-direction: column;
-        padding: 10px;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .tickets {
-        width: 90%;
-        padding: 16px;
-    }
-
-    .title {
-        font-size: 22px;
-        margin-bottom: 25px;
-    }
-
-    .seats {
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .all-seats {
-        grid-template-columns: repeat(9, 1fr); /* Adjust seat grid for medium-small screens */
-        grid-gap: 12px;
-        margin: 30px 0;
-    }
-
-    .seat {
-        width: 18px;
-        height: 18px;
-    }
-
-    .screentext {
-        font-size: 13px;
-    }
-
-    .timings {
-        margin-top: 25px;
-    }
-
-    .dates {
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    .dates-item {
-        width: 48px;
-        height: 48px;
-        font-size: 11px;
-        padding: 8px 0;
-    }
-
-    .day {
-        font-size: 11px;
-    }
-
-    .times {
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-    }
-
-    .time {
-        font-size: 13px;
-        padding: 6px 12px;
-    }
-
-    .price {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .total {
-        align-items: center;
-    }
-
-    .total div {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .price button {
-        width: 100%;
-        padding: 12px;
-        font-size: 15px;
-    }
-}
-
-
-
    </style>
 </head>
 
@@ -338,7 +245,7 @@ input {
         <div class="tickets">
             <div class="ticket-selector">
                 <div class="title">
-                    Salaar The CeaseFire 
+                    Mufasa The Lion King
                 </div>
                 <div class="seats">
                     <div class="status">
@@ -405,7 +312,7 @@ input {
             </div>
             <div class="price">
                 <div class="total">
-                    <span><span class="count">0</span>  Tickets<span style="padding-left: 100px; font-size: 20px; color: rgb(1, 9, 18); font-weight: 800;"> Ticket Price:175 </span></span>
+                    <span><span class="count">0</span>Tickets <span style="padding-left: 100px; font-size: 20px; color: rgb(1, 9, 18); font-weight: 800;"> Ticket Price: 112</span></span>
                     <div>₹ <div class="amount">0</div>
                     </div>
                 </div>
@@ -440,11 +347,11 @@ tickets.forEach((ticket) => {
 
         if (ticket.checked) {
             count += 1;
-            amount += 175;
+            amount += 112;
         }
         else {
             count -= 1;
-            amount -= 175;
+            amount -= 112;
         }
         document.querySelector(".amount").innerHTML = amount;
         document.querySelector(".count").innerHTML = count;
@@ -479,10 +386,9 @@ function booked() {
         localStorage.setItem("cartData", JSON.stringify(cartData));
         localStorage.setItem(
             "backgroundUrl",
-            "./images/bookings/salaar_r.jpeg"
-            
+            "./images/bookings/lionking_r.jpeg"
         );
-        alert(` Confirming Tickets!.. !\n\n TotalAmount : ${amount}\n TotalCount : ${count}`)
+
         // Redirect to the cart page
         window.location.href = "payment.html";
     } else {

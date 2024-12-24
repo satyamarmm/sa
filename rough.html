@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .background-container {
+            height: 325px;
+            width: 215px;
+            /* padding-top: 20px; */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            /* margin: 20px auto; */
+        }
+
+        .cart-container {
+            /* max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+
+            display: flex;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            margin-left: 25px;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+        }
+
+        .cart-details p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .whole{
+            display: grid;
+            grid-column: auto;
+            border: rgb(157, 154, 154) solid ;
+            border-radius: 35px; 
+            border: none;
+            height: 495px;
+            width: 600px;
+            box-shadow: 20px 20px 65px rgb(103, 100, 100);
+           
+            
+        }
+        
+        .all{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            margin-top: 22.5vh;
+        }
+    .end{
+        margin-left: 40vW;
+    }
+    #b{
+        font-size: 18px;
+        border: none;
+    }
+   
+       
+    </style>
+</head>
+
+<body>
+
+   <div class="all">
+    <div class="whole">
+        <div class="cart-container">
+            <!-- <div class="cart-header">
+                <h2></h2>
+            </div> -->
+            <div id="background" class="background-container"></div>
+            <div class="cart-details">
+                <p> <span  style="color: #FF0000; font-size: 27.5px; padding-left: 35px; margin-top: -35px;" id="movie-title"></span></p>
+                <!-- <p><strong>Tickets:</strong> <span id="ticket-count"></span></p> -->
+                <p><strong style="font-size:25px; padding-left:35px ;">Amount</strong> ₹.<span style="color: gray; font-size: 45px;" id="total-amount"></span></p>
+
+               <p>
+                <span> <span style="color: rgb(65, 62, 62); font-size: 35px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; padding-left: 30.5px;" id="selected-date"></span> <span style="color: rgb(19, 19, 19); font-size: 35px; padding-left: 5px;" id="selected-day"></span>   <span style="font-size: 45px; color: black;">|</span></span>
+                <span> <span style="color: rgb(65, 62, 62); font-size: 25px; padding-left: 10.5px;" id="selected-time"></span></span> <br> <br>
+                <div style="padding-left: 50px;"><span id="date"></span>  <span id="data"></span>:<span id="datb"></span>:<span id="datc"></span></div>
+               </p>
+
+                <!-- <p><strong>Seats:</strong> <span id="selected-seats"></span></p> -->
+            </div>
+             
+        </div>
+  <div style="color: grey; font-size: 45px; padding-left: 20px;"> --------------------------------------</div>
+        <div class="seats">
+            <span> <span style="font-size: 50px; color: rgb(121, 121, 123); margin-left: 75px;" id="ticket-count"></span> <span style=" font-size: 35px;">tickets</span></span>
+            <span  >
+                <strong style="padding-left: 45px; color: rgb(199, 189, 189); font-size: 25px;">Seats DRESS.   </strong>  <span style="font-size: 40px; color: rgb(199, 189, 189);" id="selected-seats"></span></span>
+        </div>
+    </div>
+    
+
+   </div>
+<div class="end">
+<p style="font-size: 40px; color: #544f4f; padding-left: 105px;"> Congrats !!!</p> <p style="font-size: 36px; color: #544f4f;">Your ticket has been booked</p>
+</div>
+<button id="b" onclick="back()">Back</button>
+    <script>
+        // Retrieve details from localStorage
+const cartData = JSON.parse(localStorage.getItem("cartData"));
+const backgroundUrl = localStorage.getItem("backgroundUrl");
+
+if (cartData) {
+    document.getElementById("ticket-count").innerText = cartData.count;
+    document.getElementById("total-amount").innerText = cartData.amount;
+    document.getElementById("selected-date").innerText = cartData.date;
+    document.getElementById("selected-day").innerText = cartData.day;
+    document.getElementById("selected-time").innerText = cartData.time;
+
+    const d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+const e = new Date();
+document.getElementById("data").innerHTML = e.getHours();
+const f = new Date();
+document.getElementById("datb").innerHTML = f.getMinutes();
+const g = new Date();
+document.getElementById("datc").innerHTML = g.getMilliseconds();
+
+    // Display the movie title
+    document.getElementById("movie-title").innerText = cartData.movieTitle;
+
+    // Display selected seat numbers
+    document.getElementById("selected-seats").innerText = cartData.seats.join(", ");
+} else {
+    alert("No booking data found!");
+}
+
+if (backgroundUrl) {
+    const backgroundElement = document.getElementById("background");
+    backgroundElement.style.backgroundImage = `url('${backgroundUrl}')`;
+} else {
+    console.error("No background URL found in localStorage.");
+}
+
+function back() {
+    setTimeout(() => {
+        confirm("Returning Back")
+        window.location.href="AmarCinemas.html" 
+    }, 4000);
+}
+    
+
+    </script>
+</body>
+
+</html>
